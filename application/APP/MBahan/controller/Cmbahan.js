@@ -34,7 +34,7 @@
 			},
                         showAddForm: function(){
 				var win = this.getFRMmbahan();
-				win.setTitle('Insert Bahan Item');
+				win.setTitle('Insert Produk');
 				win.setAction('add');
 				win.down('form').getForm().reset();
 				win.show();
@@ -71,7 +71,7 @@
                         },
 			onRowdblclick: function(me, record, item, index){                            
 				var win = this.getFRMmbahan();
-				win.setTitle('Update Bahan Item');
+				win.setTitle('Update Produk');
 				win.setAction('edit');
 				win.setRecordIndex(index);
 				win.down('form').getForm().setValues(record.getData());
@@ -80,7 +80,7 @@
 			},
                         deleteItem:function (view, cell, rowIndex, colIndex, e, record, row) {
 
-                            Ext.Msg.confirm('Delete Bahan Item', 'Are you sure?', function (button) {
+                            Ext.Msg.confirm('Delete Produk', 'Are you sure?', function (button) {
                                 if (button == 'yes') {
                                     this.doProsesCRUD('delete',record);
                                 }
@@ -97,16 +97,16 @@
                                             switch(inAction) {
                                                 case 'delete':
                                                         store.load();
-                                                        createAlert('Delete Bahan Item', 'Delete Data Success', 'success');
+                                                        createAlert('Delete Produk', 'Delete Data Success', 'success');
                                                         //Ext.example.msg("Delete Bahan Item","Delete Success"," verb", record.data['Barang ItemName'] );    
                                                     break;
                                                 case 'create' :
                                                         store.load();
-                                                        createAlert('Insert Bahan Item', 'Insert Data Success', 'success');
+                                                        createAlert('Insert Produk', 'Insert Data Success', 'success');
                                                     break;
                                                 case 'update' :
                                                         store.load();
-                                                        createAlert('Update Bahan Item', 'Update Data Success', 'success');
+                                                        createAlert('Update Produk', 'Update Data Success', 'success');
                                                     break;
                                             }
 

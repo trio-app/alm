@@ -1,7 +1,7 @@
         Ext.define('MBahan.view.FRMmbahan',{
 		extend: 'Ext.window.Window',
 		alias: 'widget.FRMmbahan',
-		title: 'Insert Surat Perintah Kerja',
+		//title: 'Insert Surat Perintah Kerja',
 		width   : 550,
 		layout: 'fit',
 		resizable: false,
