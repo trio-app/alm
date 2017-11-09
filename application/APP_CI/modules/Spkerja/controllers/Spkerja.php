@@ -103,6 +103,14 @@ class Spkerja extends CI_Controller {
             $this->Cspkerja->insertbahan(json_decode($jsonData,true));
 
         }
+        
+        public function createcustomer(){        
+            $jsonData =  file_get_contents("php://input");        
+            //print_r(json_decode($jsonData,true));
+            $this->load->model('Cspkerja');
+            $this->Cspkerja->insertcustomer(json_decode($jsonData,true));
+
+        }
         public function reportPreview($id = NULL){
              ob_start();
                         $this->load->model('Rspkerja');

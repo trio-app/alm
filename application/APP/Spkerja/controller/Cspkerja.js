@@ -1,6 +1,6 @@
                     Ext.define('Spkerja.controller.Cspkerja',{
 			extend: 'Ext.app.Controller',
-			views: ['GRIDspkerja','FRMspkerja','FRMselectcust', 'FRMselectbahan', 'FRMinputbahan'],
+			views: ['GRIDspkerja','FRMspkerja','FRMselectcust', 'FRMselectbahan', 'FRMinputbahan', 'FRMinputcustomer'],
 			stores  : ['Sspkerja','Scustomer', 'Sbahanitem'],
 			refs: [{
 				ref: 'formWindow',
@@ -21,6 +21,11 @@
 				ref: 'FRMinputbahan',
 				xtype: 'FRMinputbahan',
 				selector: 'FRMinputbahan',
+				autoCreate: true
+			},{
+				ref: 'FRMinputcustomer',
+				xtype: 'FRMinputcustomer',
+				selector: 'FRMinputcustomer',
 				autoCreate: true
 			}],
                              init: function(){
@@ -54,6 +59,12 @@
                                         'WCustomer > toolbar > textfield[itemId=searchDataCustomer]': {
                                                 specialkey: this.searchData
                                         },
+                                        'WCustomer > toolbar > button[action=add_customer]': {
+                                                click: this.showAddcustomer
+                                        },
+                                        'FRMinputcustomer button[action=add_newcustomer]':{
+						click: this.doSavecustomer
+					},
                                         'WBahanitem > toolbar > textfield[itemId=searchDataBahan]': {
                                                 specialkey: this.searchDataBahan
                                         },
@@ -86,6 +97,11 @@
                                 });    
                                 
 				win.show();
+			},
+                        showAddcustomer: function(){
+				var win = this.getFRMinputcustomer();
+				win.show();
+                                //alert('test');
 			},
                         showCustGrid: function(){
 				var win = this.getFormCust();
@@ -289,6 +305,38 @@
                                         }
                                     });
                         },
+                        doProsesCRUDcustomer : function (inAction,record,data){
+                            var store = this.getScustomerStore();//Ext.getStore('ScontactStore');
+                            Ext.Ajax.request({
+                                        url: baseurl + 'spkerja/' +  inAction,
+                                        method: 'POST',
+                                        type:'json',
+                                        params: JSON.stringify(record.data),
+                                        success: function(response){
+                                            switch(inAction) {
+                                                case 'deletecustomer':
+                                                        store.load();
+                                                        createAlert('Delete Customer', 'Delete Data Success', 'success');
+                                                        //Ext.example.msg("Delete Category","Delete Success"," verb", record.data['CategoryName'] );    
+                                                    break;
+                                                case 'createcustomer' :
+                                                        store.load();
+                                                        createAlert('Insert Customer', 'Insert Data Success', 'success');
+                                                    break;
+                                                case 'updatecustomer' :
+                                                        store.load();
+                                                        createAlert('Update Customer', 'Update Data Success', 'success');
+                                                    break;
+                                            }
+
+                                        },
+                                        failure: function(response){
+                                            //createAlert('Error ' + response.status, response.responseText, 'error');
+                                            Ext.Msg.alert('server-side failure with status code ' + response.status  , response.responseText);
+
+                                        }
+                                    });
+                        },
                             doSaveform: function(){
                                 var win = this.getFormWindow();
                                 var store = this.getSspkerjaStore();
@@ -334,6 +382,31 @@
 				}else{
                                     if(form.isValid()){
                                         this.doProsesCRUDbahan('createbahan',recValue);
+                                        win.close();
+                                    }
+				}
+			},
+                        
+                        doSavecustomer: function(){
+                                var win = this.getFRMinputcustomer();
+                                var store = this.getScustomerStore();
+                                var form = win.down('form');
+                                //var values = form.getValues();
+                                var values = form.getValues();
+                                var record = form.getRecord();
+                                var action = win.getAction();
+                                var recValue = Ext.create('Spkerja.model.Mcustomer', values);
+                                console.log(values);
+                                console.log(action);
+                                
+				if(action == 'editcustomer'){
+                                    if(form.isValid()){
+                                        this.doProsesCRUDcustomer('updatecustomer',recValue);
+                                        win.close();
+                                    }
+				}else{
+                                    if(form.isValid()){
+                                        this.doProsesCRUDcustomer('createcustomer',recValue);
                                         win.close();
                                     }
 				}
