@@ -257,6 +257,38 @@
                                         }
                                     });
                         },
+                        doProsesCRUDbahan : function (inAction,record,data){
+                            var store = this.getSbahanitemStore();//Ext.getStore('ScontactStore');
+                            Ext.Ajax.request({
+                                        url: baseurl + 'spkerja/' +  inAction,
+                                        method: 'POST',
+                                        type:'json',
+                                        params: JSON.stringify(record.data),
+                                        success: function(response){
+                                            switch(inAction) {
+                                                case 'deletebahan':
+                                                        store.load();
+                                                        createAlert('Delete Produk', 'Delete Data Success', 'success');
+                                                        //Ext.example.msg("Delete Category","Delete Success"," verb", record.data['CategoryName'] );    
+                                                    break;
+                                                case 'createbahan' :
+                                                        store.load();
+                                                        createAlert('Insert Produk', 'Insert Data Success', 'success');
+                                                    break;
+                                                case 'updatebahan' :
+                                                        store.load();
+                                                        createAlert('Update Produk', 'Update Data Success', 'success');
+                                                    break;
+                                            }
+
+                                        },
+                                        failure: function(response){
+                                            //createAlert('Error ' + response.status, response.responseText, 'error');
+                                            Ext.Msg.alert('server-side failure with status code ' + response.status  , response.responseText);
+
+                                        }
+                                    });
+                        },
                             doSaveform: function(){
                                 var win = this.getFormWindow();
                                 var store = this.getSspkerjaStore();
@@ -294,14 +326,14 @@
                                 console.log(values);
                                 console.log(action);
                                 
-				if(action == ''){
+				if(action == 'editbahan'){
                                     if(form.isValid()){
-                                        this.doProsesCRUD('update',recValue);
+                                        this.doProsesCRUDbahan('updatebahan',recValue);
                                         win.close();
                                     }
 				}else{
                                     if(form.isValid()){
-                                        this.doProsesCRUD('createbahan',recValue);
+                                        this.doProsesCRUDbahan('createbahan',recValue);
                                         win.close();
                                     }
 				}

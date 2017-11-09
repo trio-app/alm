@@ -36,6 +36,27 @@ var table = Ext.define('Spkerja.view.VSelect_Bahanitem',{
         displayMsg: 'Total Data {0} - {1} of {2}',
         emptyMsg: "No Data Display"
         });
+        this.addEvents('removeitem');
+        this.actions = {
+            removeitem: Ext.create('Ext.Action', {
+                text: 'Delete Record',
+                handler: function () { this.fireEvent('removeitem', this.getSelected()) },
+                scope: this,
+                icon: baseurl + 'system/images/icons/delete.gif',
+            })
+        };
+        var contextMenu = Ext.create('Ext.menu.Menu', {
+            items: [
+                this.actions.removeitem
+            ]
+        });
+        this.on({
+            itemcontextmenu: function (view, rec, node, index, e) {
+                e.stopEvent();
+                contextMenu.showAt(e.getXY());
+                return false;
+            }
+        });            
         this.callParent(arguments);
     },
     getSelected: function () {

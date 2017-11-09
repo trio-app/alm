@@ -100,7 +100,7 @@ class Spkerja extends CI_Controller {
             $jsonData =  file_get_contents("php://input");        
             //print_r(json_decode($jsonData,true));
             $this->load->model('Cspkerja');
-            $this->Cmbahan->insertbahan(json_decode($jsonData,true));
+            $this->Cspkerja->insertbahan(json_decode($jsonData,true));
 
         }
         public function reportPreview($id = NULL){
