@@ -33,9 +33,19 @@
 				});
 			},
                         showAddForm: function(){
-				var win = this.getFRMmbahan();
+				var win = this.up('form').getFRMmbahan();
 				win.setTitle('Insert Bahan Item');
-				win.setAction('add');
+				if(win.isValid()){
+                                    win.submit({
+                                        url:'upload-image.php',
+                                        waitMsg:'Uploading Image...',
+                                        success:function(fp, o) {
+                                            Msg.alert('Success', 'Upload... "'+ o.result.file + '" has been uploaded.');
+                                        }
+                                    });
+                                }
+                                win.setAction('add');
+                                
 				win.down('form').getForm().reset();
 				win.show();
 			},
