@@ -3,7 +3,10 @@ var table = Ext.define('Spkerja.view.VSelect_Cust',{
     alias: 'widget.WCustomer',
     store: 'Scustomer',  
     initComponent: function () {
-        this.tbar = [
+        this.tbar = [{
+           text: '<b>Insert Customer</b>', action: 'add_customer',
+           icon: baseurl + 'system/images/icons/drop-add.gif'
+        },
             '->',
         {
             xtype: 'textfield',
