@@ -65,7 +65,7 @@
 				</td>
                                 <td width="215" style="padding: 10px;">
 					Merk : 
-					<span style="color: #ff0000;"><?php echo $value['spk_jenisbahan']; ?></span>
+					<span style="color: #ff0000;"><?php echo $value['spk_merk']; ?></span>
 				</td>
 				<td width="215" style="padding: 10px;">
 					Warna Glasin : 
@@ -152,7 +152,7 @@
                                                 </tr>
 					</table>
 				</td>
-				<td width="300" height="260" valign="top" style="padding: 0px 10px;">
+				<td width="300" height="220" valign="top" style="padding: 0px 10px;">
 					Gambar Label
 				</td>
 			</tr>
@@ -163,13 +163,13 @@
 				<td width="187" align="center">
 					QTY ORDER
 				</td>
-				<td width="185" align="center">
+				<td width="187" align="center">
 					BARIS LABEL
 				</td>
 				<td width="187" align="center">
 					QTY / <span style="color: #ff0000;"><?php echo $value['spk_qtyname']; ?></span>
 				</td>
-				<td width="185" align="center">
+				<td width="187" align="center">
 					TOTAL / <span style="color: #ff0000;"><?php echo $value['spk_totalname']; ?></span>
 				</td>
 			</tr>
@@ -208,7 +208,7 @@
 			<tr>
 				<td style="padding: 10px;">
 					<span style="color: #ff0000;">
-						<?php echo $value['spk_jenisbahan']; ?>
+						<?php echo $value['spk_jenisbahan'] .' - '. $value['spk_merk']; ?>
 					</span>
 				</td>
 			</tr>
