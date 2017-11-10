@@ -443,10 +443,7 @@
                                             var order_baris = Ext.getCmp('spk_mataperbaris').getValue();
                                             //----
                                             var bahan_l = Ext.getCmp('bahan_ukuranL').getValue();
-                                            var digunakanP = Ext.getCmp('bahan_digunakanP').getValue();
                                             var bahan_gap = Ext.getCmp('bahan_gap').getValue();
-                                            var total_all = Ext.getCmp('digunakan_total').getValue();
-                                            var total_m2 = Ext.getCmp('total_m2');
                                             var total_all = Ext.getCmp('digunakan_total');
                                             if (order > 0 && upp > 0 && order_baris > 0) {
                                                 total.setValue( 
@@ -457,10 +454,6 @@
                                                         (bahan_l + bahan_gap ) * order / 1000
                                                     );
                                                     
-                                                    total_m2.setValue(
-                                                        (digunakanP / 1000) * total_all 
-                                                    );
-                                                 
                                             }
                                         }
                                     }                                      
@@ -564,9 +557,16 @@
                                             console.log("Calculating");
                                             var total_all = Ext.getCmp('digunakan_total').getValue();
                                             var jml_roll = Ext.getCmp('jml_roll');
+                                            var digunakanP = Ext.getCmp('bahan_digunakanP').getValue();
+                                            
+                                            var total_luas = Ext.getCmp('total_m2');
                                             if (total_all > 0 ) {
                                                     jml_roll.setValue(
                                                         total_all / 1000
+                                                    );
+                                                    
+                                                    total_luas.setValue(
+                                                        (digunakanP / 1000) * total_all 
                                                     );
                                             }
                                         }
@@ -586,9 +586,8 @@
                                     id: 'digunakan_total',
                                     name: 'total',
                                     fieldLabel: 'TOTAL',
-                                    widthLabel:'50',
+                                    widthLabel:'10',
                                     allowBlank: 'false',
-                                    padding:'10 10 10 10',
                                     margin: '5 5 0 8',
                                     width: '31%',
                                     readOnly: true
@@ -598,9 +597,9 @@
                                     name: 'total2',
                                     fieldLabel: 'TOTAL m<sup>2</sup>',
                                     allowBlank: 'false',
-                                    padding:'10 10 10 10',
                                     margin: '5 5 0 8',
                                     width: '31%',
+                                    renderer: Ext.util.Format.numberRenderer('0.000'),
                                     readOnly: true
                                 }]
                             },{
