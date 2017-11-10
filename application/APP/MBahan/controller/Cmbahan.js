@@ -33,17 +33,9 @@
 				});
 			},
                         showAddForm: function(){
-				var win = this.up('form').getFRMmbahan();
+				var win = this.getFRMmbahan();
 				win.setTitle('Insert Bahan Item');
-				if(win.isValid()){
-                                    win.submit({
-                                        url:'upload-image.php',
-                                        waitMsg:'Uploading Image...',
-                                        success:function(fp, o) {
-                                            Msg.alert('Success', 'Upload... "'+ o.result.file + '" has been uploaded.');
-                                        }
-                                    });
-                                }
+				
                                 win.setAction('add');
                                 
 
@@ -137,10 +129,31 @@
                                 var win = this.getFRMmbahan();
                                 var store = this.getSmbahanStore();
                                 var form = win.down('form');
+                                var upload = win.up('form');
+                                
+                            if(upload.isValid()){
+                                    upload.submit({
+                                        url:'upload-image.php',
+                                        waitMsg:'Uploading Image...',
+                                        success:function(fp, o) {
+                                            Msg.alert('Success', 'Upload... "'+ o.result.file + '" has been uploaded.');
+                                        }
+                                    });
+                                }
                                 //var values = form.getValues();
+                                var upl
                                 var values = form.getValues();
                                 var record = form.getRecord();
                                 var action = win.getAction();
+                                if(win.isValid()){
+                                    win.submit({
+                                        url:'upload-image.php',
+                                        waitMsg:'Uploading Image...',
+                                        success:function(fp, o) {
+                                            Msg.alert('Success', 'Upload... "'+ o.result.file + '" has been uploaded.');
+                                        }
+                                    });
+                                }
                                 var recValue = Ext.create('MBahan.model.Mmbahan', values);
                                 console.log(action);
                                 
