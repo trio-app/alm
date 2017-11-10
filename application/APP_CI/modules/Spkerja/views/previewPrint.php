@@ -167,7 +167,7 @@
 					BARIS LABEL
 				</td>
 				<td width="187" align="center">
-					QTY / <span style="color: #ff0000;"><?php echo $value['spk_qtyname']; ?></span>
+					QTY / <span     style="color: #ff0000;"><?php echo $value['spk_qtyname']; ?></span>
 				</td>
 				<td width="187" align="center">
 					TOTAL / <span style="color: #ff0000;"><?php echo $value['spk_totalname']; ?></span>
