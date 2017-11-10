@@ -44,6 +44,21 @@
                         },{
                                 xtype: 'container',
                                 layout: 'hbox',
+                                defaultType: 'filefield', 
+                                margin : '5 0',
+                                anchor: '100%',
+                                items :[{
+                                        xtype:'filefield',
+                                        name:'',
+                                        fieldLabel: 'Gambar Label',
+                                        allowBlank: true,
+                                        msgTarget: 'side',
+                                        labelWidth: 80,
+                                        anchor:'100%'
+                                    }]    
+                        },{
+                                xtype: 'container',
+                                layout: 'hbox',
                                 defaultType: 'textfield',
                                 margin: '5 0',
                                 anchor: '100%',
@@ -282,6 +297,7 @@
 		buttons: [{
 			text: 'Save',
 			action: 'add'
+                        
 		},{
                         text    : 'Reset',
                         handler : function () { 
