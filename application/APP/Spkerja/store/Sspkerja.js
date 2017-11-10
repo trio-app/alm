@@ -36,7 +36,8 @@
                             'jml_roll',
                             'spk_tglkirim',
                             'spk_nosuratjalan',
-                            'total']
+                            'total',
+                            'total2']
 		});
                 
                 Ext.define('Spkerja.store.Sspkerja',{
