@@ -594,6 +594,7 @@
                                 },{
                                     xtype: 'textfield',
                                     id: 'total_m2',
+                                    dataIndex:'total',
                                     name: 'total2',
                                     fieldLabel: 'TOTAL m<sup>2</sup>',
                                     allowBlank: 'false',
