@@ -6,16 +6,17 @@
 		
 		<!-- ExtJs Link, Style, Script dll -->
 		
-		<link rel="stylesheet" type="text/css" href=<?php echo base_url('system/extjs/resources/css/ext-all.css'); ?> />
-		<script type="text/javascript" src=<?php echo base_url('system/extjs/ext-all-debug.js'); ?>></script>
-		<link rel="stylesheet" type="text/css" href=<?php echo base_url('system/images/information.css'); ?> />
-                <link rel="stylesheet" type="text/css" href=<?php echo base_url('system/extjs/FilterRow.css'); ?> />
-		<script type="text/javascript" src=<?php echo base_url('system/extjs/notification.js'); ?>></script>
-		<script type="text/javascript" src=<?php echo base_url('system/images/information.js'); ?>></script>
-                <script type="text/javascript" src=<?php echo base_url('system/extjs/FilterRow.js'); ?>></script>
+		<link rel="stylesheet" type="text/css" href="<?php echo extjs_url('resources/css/ext-all.css'); ?>" />
+		<script type="text/javascript" src="<?php echo extjs_url('ext-all-debug.js'); ?>"></script>
+		<link rel="stylesheet" type="text/css" href="<?php echo base_url('system/images/information.css'); ?>" />
+                <link rel="stylesheet" type="text/css" href="<?php echo extjs_url('FilterRow.css'); ?>" />
+		<script type="text/javascript" src="<?php echo extjs_url('notification.js'); ?>"></script>
+		<script type="text/javascript" src="<?php echo base_url('system/images/information.js'); ?>"></script>
+                <script type="text/javascript" src="<?php echo extjs_url('FilterRow.js'); ?>"></script>
         <script type="text/javascript">
 		var baseurl = '<?php echo base_url(); ?>';
 		var title = '<?php echo $title; ?>';
+                var extjs_url = '<?php echo extjs_url(); ?>';
 	</script>
 	<script type="text/javascript">
                 
