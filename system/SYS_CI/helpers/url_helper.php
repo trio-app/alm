@@ -46,7 +46,23 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @author		EllisLab Dev Team
  * @link		https://codeigniter.com/user_guide/helpers/url_helper.html
  */
-
+if ( ! function_exists('extjs_url'))
+{
+	/**
+	 * Site URL
+	 *
+	 * Create a local URL based on your basepath. Segments can be passed via the
+	 * first parameter either as a string or an array.
+	 *
+	 * @param	string	$uri
+	 * @param	string	$protocol
+	 * @return	string
+	 */
+	function extjs_url($uri = '', $protocol = NULL)
+	{
+		return 'http://' . $_SERVER['SERVER_NAME'] .':' . $_SERVER['SERVER_PORT'] . '/extjs/' . $uri;
+	}
+}
 // ------------------------------------------------------------------------
 
 if ( ! function_exists('site_url'))

@@ -46,22 +46,7 @@
 				win.down('form').getForm().reset();
 				win.show();
 			},
-                       /* showAddForm: function(){
-				var win = this.up('form').getFormWindow();
-				win.setTitle('Insert Bahan Item');
-                                win.setAction('add');
-                                if(win.isValid()){
-                                win.submit({
-                                    url: 'photo-upload.php',
-                                    waitMsg: 'Uploading your photo...',
-                                    success: function(fp, o) {
-                                        Ext.Msg.alert('Success', 'Your photo "' + o.result.file + '" has been uploaded.');
-                                    }
-                                });
-				///win.down('form').getForm().reset();
-				//win.show();
-                            }
-                         } */    
+                       
                         searchData:function (f,e) {
                             var store = this.getSmbahanStore();//Ext.getStore('STassetlocation');
                             if (e.getKey() == e.ENTER) {
@@ -129,31 +114,23 @@
                                 var win = this.getFRMmbahan();
                                 var store = this.getSmbahanStore();
                                 var form = win.down('form');
-                                var upload = win.up('form');
                                 
-                            if(upload.isValid()){
-                                    upload.submit({
-                                        url:'upload-image.php',
-                                        waitMsg:'Uploading Image...',
-                                        success:function(fp, o) {
-                                            Msg.alert('Success', 'Upload... "'+ o.result.file + '" has been uploaded.');
-                                        }
-                                    });
-                                }
+                                var form = this.up('form').getForm();
+                                            //console.log(form.getValues());
+                                                form.submit({
+                                                    url: baseurl + 'MBahan/upload',
+                                                    waitMsg: 'Uploading your photo...',
+                                                    success: function(status, msg) {
+                                                        //msg('Success', tpl.apply(o.result));
+                                                        Ext.MessageBox.alert(status, msg);
+                                                    }
+                                                });
+                                        
                                 //var values = form.getValues();
-                                var upl
                                 var values = form.getValues();
                                 var record = form.getRecord();
                                 var action = win.getAction();
-                                if(win.isValid()){
-                                    win.submit({
-                                        url:'upload-image.php',
-                                        waitMsg:'Uploading Image...',
-                                        success:function(fp, o) {
-                                            Msg.alert('Success', 'Upload... "'+ o.result.file + '" has been uploaded.');
-                                        }
-                                    });
-                                }
+                                
                                 var recValue = Ext.create('MBahan.model.Mmbahan', values);
                                 console.log(action);
                                 

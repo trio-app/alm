@@ -42,20 +42,39 @@
                                 }]
                                 
                         },{
-                                xtype: 'container',
+                                xtype: 'fieldset',
                                 layout: 'hbox',
-                                defaultType: 'filefield', 
-                                margin : '5 0',
+                                title:'Upload',
+                                margin : '5',
                                 anchor: '100%',
                                 items :[{
                                         xtype:'filefield',
-                                        name:'',
+                                        name:'file',
                                         fieldLabel: 'Gambar Label',
                                         allowBlank: true,
                                         msgTarget: 'side',
                                         labelWidth: 80,
                                         anchor:'100%'
-                                    }]    
+                                    }/*,{
+                                        xtype:'button',
+                                        //scale: 'medium',
+                                        margin:'0 0 0 100',
+                                        text: 'SAVE',
+                                        //action: 'add',
+                                        //icon: base_url + 'system/img/save.ico',
+                                        handler: function(){
+                                            var form = this.up('form').getForm();
+                                            //console.log(form.getValues());
+                                                form.submit({
+                                                    url: baseurl + 'MBahan/upload',
+                                                    waitMsg: 'Uploading your photo...',
+                                                    success: function(status, msg) {
+                                                        //msg('Success', tpl.apply(o.result));
+                                                        Ext.MessageBox.alert(status, msg);
+                                                    }
+                                                });
+                                        }
+                                }*/]
                         },{
                                 xtype: 'container',
                                 layout: 'hbox',

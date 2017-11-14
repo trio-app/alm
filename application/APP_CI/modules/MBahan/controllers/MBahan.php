@@ -37,6 +37,35 @@ class MBahan extends CI_Controller {
             $this->load->model('Dmbahan');
             $this->Dmbahan->deleteDT(json_decode($jsonData,true));
         }
+        public function upload(){
+            $status = "";
+            $msg = "";
+            $file_element_name = 'file';
+
+            if ($status != "error")
+            {
+                $config['upload_path'] = './system/images/';
+                $config['allowed_types'] = 'gif|jpg|png|doc|txt';
+                $config['max_size'] = 1024 * 8;
+                $config['encrypt_name'] = TRUE;
+
+                $this->load->library('upload', $config);
+
+                if (!$this->upload->do_upload($file_element_name))
+                {
+                    $status = 'error';
+                    $msg = $this->upload->display_errors('', '');
+                }
+                else
+                {
+                    $data = $this->upload->data();
+                    $status = $data['file_name'];
+                    $msg = "File successfully uploaded";
+                }
+                @unlink($_FILES[$file_element_name]);
+            }
+            echo json_encode(array('status' => $status, 'msg' => $msg));
+    }
         public function cbolist(){
         $this->load->model('Rmbahan');
         header('Content-type: application/json');

@@ -6,17 +6,18 @@
 		
 		<!-- ExtJs Link, Style, Script dll -->
 		
-		<link rel="stylesheet" type="text/css" href=<?php echo $base_url; ?>system/extjs/resources/css/ext-all.css />
-		<link rel="stylesheet" type="text/css" href=<?php echo $base_url; ?>system/extjs/resources/css/notification.css />
-		<link rel="stylesheet" type="text/css" href=<?php echo $base_url; ?>system/images/information.css />
-		<script type="text/javascript" src=<?php echo $base_url; ?>system/extjs/ext-all.js></script>
-		<script type="text/javascript" src=<?php echo $base_url; ?>system/extjs/notification.js></script>
-		<script type="text/javascript" src=<?php echo $base_url; ?>system/images/information.js></script>
+		<link rel="stylesheet" type="text/css" href="<?php echo extjs_url('resources/css/ext-all.css');?>"/>
+		<link rel="stylesheet" type="text/css" href="<?php echo extjs_url('resources/css/notification.css');?>"/>
+		<link rel="stylesheet" type="text/css" href="<?php echo base_url('system/images/information.css');?>"/>
+		<script type="text/javascript" src="<?php echo extjs_url('ext-all.js'); ?>"></script>
+		<script type="text/javascript" src="<?php echo extjs_url('notification.js'); ?>"></script>
+		<script type="text/javascript" src="<?php echo base_url('system/images/information.js');?>"></script>
               
                 
 	<script type="text/javascript">
 		var baseurl = '<?php echo $base_url; ?>';
 		var title = '<?php echo $title; ?>';
+                var extjs_url = '<?php echo extjs_url(); ?>';
 	</script>
 	<script type="text/javascript">         
             
