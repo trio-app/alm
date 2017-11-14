@@ -71,6 +71,8 @@ class Uspkerja extends CI_Model {
                     
                         'total'=> $dtrows['total'],
                         
+                        'total2'=>$dtrows['total2'],
+                        
                         'spk_tglkirim' => $dtrows['spk_tglkirim'],
                     
                         'spk_nosuratjalan' => $dtrows['spk_nosuratjalan'],

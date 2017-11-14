@@ -288,7 +288,7 @@
                                     labelAlign: 'top',
                                     margin: '5 5 0 0',
                                     width: '50%',
-                                    store: ['Continues', 'Black Mark', 'Coak']
+                                    store: ['GAP (3mm)','Continues', 'Black Mark', 'Coak']
                                 }]
                         }
                               

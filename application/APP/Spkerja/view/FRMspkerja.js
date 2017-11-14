@@ -5,7 +5,7 @@
 		alias: 'widget.FRMspkerja',
 		title: 'Insert Surat Perintah Kerja',
 		width: 800,
-                height: 650,
+                //height: 625,
 		layout: 'fit',
 		resizable: false,
                 autoScroll: true,
@@ -31,6 +31,7 @@
                                 layout: 'hbox',
                                 defaultType: 'textfield', 
                                 margin : '5 0',
+                                anchor: '100%',
                                 items :[{
                                     labelAlign:'top',
                                     readOnly: true,
@@ -39,7 +40,7 @@
                                     fieldLabel: 'No. Document',
                                     allowBlank: false,
                                     margin: '0 5 0 0',
-                                    flex: 1
+                                    flex: 2
                                 },{
                                     labelAlign:'top',
                                     name: 'spk_date',
@@ -48,8 +49,36 @@
                                     fieldLabel: 'Document Date',
                                     allowBlank: false,
                                     margin: '0 5 0 0',
-                                    flex: 1
-                                }]
+                                    flex: 2
+                                },{
+                                    xtype: 'hidden',
+                                    name: 'customer_id',
+                                    fieldLabel: 'ID',
+                                    allowBlank: false,
+                                    margin: '0 5 0 0',
+                                    flex: 2
+                                },{
+                                    name: 'customer_nama',
+                                    fieldLabel: 'Customer',
+                                    labelAlign: 'top',
+                                    allowBlank: false,
+                                    margin: '0 5 0 0',
+                                    flex: 1,
+                                    readOnly: true
+                                },{
+                                    xtype: 'button',
+                                    id: 'select_cust1',
+                                    action: 'select_cust1',
+                                    icon: baseurl + 'system/images/icons/user_add.gif',
+                                    text: 'Pilih Customer',
+                                    flex: 1,
+                                    margin: '15 5 0 0',
+                                            listeners: {
+                                                click: function() {
+                                                    //Ext.getCmp('contact_provinsi').store.reload();
+                                                }
+                                            }                                
+                            }]
 
                             },{
                                 xtype: 'container',
@@ -64,7 +93,7 @@
                                     fieldLabel: 'No. PO',
                                     allowBlank: false,
                                     margin: '0 5 0 0',
-                                    flex: 1
+                                    flex: 2
                                 },{
                                     xtype: 'datefield',
                                     labelAlign:'top',
@@ -75,42 +104,8 @@
                                     fieldLabel: 'Delivery Date',
                                     allowBlank: false,
                                     margin: '0 5 0 0',
-                                    flex: 1,
-                                }]
-
-                            },{
-                                xtype: 'container',
-                                layout: 'hbox',
-                                defaultType: 'textfield', 
-                                margin : '5 0',
-                                items :[{
-                                    xtype: 'hidden',
-                                    name: 'customer_id',
-                                    fieldLabel: 'ID',
-                                    allowBlank: false,
-                                    margin: '5 5 0 0',
                                     flex: 2
                                 },{
-                                    name: 'customer_nama',
-                                    fieldLabel: 'Customer',
-                                    allowBlank: false,
-                                    margin: '5 5 0 0',
-                                    flex: 2,
-                                    readOnly: true
-                                },{
-                                    xtype: 'button',
-                                    id: 'select_cust1',
-                                    action: 'select_cust1',
-                                    icon: baseurl + 'system/images/icons/user_add.gif',
-                                    text: 'Pilih Customer',
-                                    flex: 1,
-                                    margin: '5 5 0 0',
-                                            listeners: {
-                                                click: function() {
-                                                    //Ext.getCmp('contact_provinsi').store.reload();
-                                                }
-                                            }                                
-                            },{
                                     xtype: 'hidden',
                                     name: 'bahan_id',
                                     fieldLabel: 'ID',
@@ -121,9 +116,11 @@
                                     id:'bahan_nama',
                                     name: 'spk_bahannama',
                                     fieldLabel: 'Nama Produk',
+                                    labelAlign: 'top',
                                     allowBlank: false,
-                                    margin: '5 5 0 0',
-                                    flex: 2,
+                                    margin: '0 5 0 0',
+                                    width: '50%',
+                                    flex: 1,
                                     readOnly: true
                                     
                                 },{
@@ -133,7 +130,7 @@
                                     icon: baseurl + 'system/images/icons/application_view_list.png',
                                     text: 'Pilih Produk',
                                     flex: 1,
-                                    margin: '5 5 0 0',
+                                    margin: '15 5 0 0',
                                             listeners: {
                                                 click: function() {
                                                     //Ext.getCmp('contact_provinsi').store.reload();
@@ -164,7 +161,7 @@
                                     fieldLabel: 'Jenis Bahan',
                                     allowBlank: false,
                                     margin: '5 5 0 0',
-                                    width: '20%',
+                                    flex: 2,
                                     readOnly: true
                                     
                                 },{
@@ -175,7 +172,7 @@
                                     fieldLabel: 'Merk Bahan',
                                     allowBlank: false,
                                     margin: '5 5 0 0',
-                                    width: '20%',
+                                    flex: 2,
                                     readOnly: true
                                 },{
                                     xtype: 'textfield',
@@ -185,7 +182,7 @@
                                     fieldLabel: 'Warna Glasin',
                                     allowBlank: false,
                                     margin: '5 5 0 0',
-                                    width: '20%',
+                                    flex: 2,
                                     readOnly: true
                                 },{
                                     xtype: 'textfield',
@@ -195,7 +192,7 @@
                                     fieldLabel: 'Bentuk Label',
                                     allowBlank: false,
                                     margin: '5 5 0 0',
-                                    width: '20%',
+                                    flex: 2,
                                     readOnly: true
                                 },{
                                     xtype: 'textfield',
@@ -205,10 +202,52 @@
                                     fieldLabel: 'Porporasi',
                                     allowBlank: false,
                                     margin: '5 5 0 0',
-                                    width: '10%',
+                                    flex: 1,
                                     readOnly: true
                                 }]
 
+                            },{
+                                xtype: 'container',
+                                layout: 'hbox',
+                                defaultType: 'textfield',
+                                margin: '5 0',
+                                anchor: '100%',
+                                items: [{
+                                    id: 'bahan_warnacetakan',
+                                    name: 'spk_warnacetakan',
+                                    labelAlign: 'top',
+                                    fieldLabel: 'Warna Cetakan',
+                                    allowBlank: false,
+                                    margin: '5 5 0 0',
+                                    flex: 2,
+                                    readOnly: true
+                                },{
+                                    id: 'bahan_arahgulungan',
+                                    name: 'spk_arahgulungan',
+                                    labelAlign: 'top',
+                                    fieldLabel: 'Arah Gulungan',
+                                    allowBlank: 'false',
+                                    margin: '5 5 0 0',
+                                    flex: 2,
+                                    readOnly: true
+                                },{
+                                    id: 'bahan_sensor',
+                                    name: 'spk_sensor',
+                                    labelAlign: 'top',
+                                    fieldLabel: 'Sensor',
+                                    margin: '5 5 0 0',
+                                    flex: 2,
+                                    readOnly: true
+                                },{
+                                    id: 'bahan_core',
+                                    name: 'spk_core',
+                                    labelAlign: 'top',
+                                    fieldLabel: 'Core',
+                                    allowBlank: 'false',
+                                    margin: '5 5 0 0',
+                                    flex: 2,
+                                    readOnly: true
+                                }]
                             },{
                                 xtype: 'container',
                                 layout: 'hbox',
@@ -269,7 +308,7 @@
                                     labelAlign: 'top', 
                                     allowBlank: false, 
                                     margin: '5 5 0 0', 
-                                    anchor: '10%'
+                                    flex: 2
                                },{
                                     xtype: 'label', text: 'X', margin: '25 5 0 0'
                                },{
@@ -280,17 +319,7 @@
                                     labelAlign: 'top', 
                                     allowBlank: false, 
                                     margin: '22 5 0 0', 
-                                    anchor: '10%'  
-                                },{
-                                    id: 'spk_matapisau',
-                                    name: 'spk_matapisau',
-                                    labelAlign: 'top',
-                                    fieldLabel: 'Baris Mata Pisau',
-                                    allowBlank: false,
-                                    margin: '5 5 0 0',
-                                    width: '15%',
-                                    readOnly: false
-                                    
+                                    flex: 2  
                                 },{
                                     id: 'bahan_gap',
                                     name: 'spk_gap',
@@ -298,7 +327,7 @@
                                     fieldLabel: 'GAP',
                                     allowBlank: false,
                                     margin: '5 5 0 0',
-                                    width: '15%',
+                                    flex: 1,
                                     readOnly: false,
                                     listeners: {
                                         change: function(field, newVal, oldVal) {
@@ -322,16 +351,7 @@
                                         }
                                     }
                                     
-                                }
-                                    
-                                ]
-                            },{
-                                xtype: 'container',
-                                layout: 'hbox',
-                                defaultType: 'textfield',
-                                margin: '5 0',
-                                anchor: '100%',
-                                items: [{
+                                },{
                                     id: 'spk_mataperbaris',
                                     xtype: 'numberfield',
                                     name: 'spk_mataperbaris',
@@ -339,7 +359,7 @@
                                     fieldLabel: 'Total Baris Order',
                                     allowBlank: false,
                                     margin: '5 5 0 0',
-                                    width: '15%',
+                                    flex: 2,
                                     readOnly: false,
                                     listeners: {
                                         change: function(field, newVal, oldVal) {
@@ -362,6 +382,16 @@
                                             }
                                         }
                                     }
+                                    
+                                },{
+                                    id: 'spk_matapisau',
+                                    name: 'spk_matapisau',
+                                    labelAlign: 'top',
+                                    fieldLabel: 'Baris Mata Pisau',
+                                    allowBlank: false,
+                                    margin: '5 5 0 0',
+                                    flex: 2,
+                                    readOnly: false
                                     
                                 },{
                                     xtype: 'numberfield',
@@ -370,44 +400,9 @@
                                     fieldLabel: 'Total Mata Pisau',
                                     allowBlank: false,
                                     margin: '5 5 0 0',
-                                    width: '15%',
+                                    flex: 2,
                                     readOnly: false
                                     
-                                },{
-                                    id: 'bahan_warnacetakan',
-                                    name: 'spk_warnacetakan',
-                                    labelAlign: 'top',
-                                    fieldLabel: 'Warna Cetakan',
-                                    allowBlank: false,
-                                    margin: '5 5 0 0',
-                                    width: '15%',
-                                    readOnly: true
-                                },{
-                                    id: 'bahan_arahgulungan',
-                                    name: 'spk_arahgulungan',
-                                    labelAlign: 'top',
-                                    fieldLabel: 'Arah Gulungan',
-                                    allowBlank: 'false',
-                                    margin: '5 5 0 0',
-                                    width: '15%',
-                                    readOnly: true
-                                },{
-                                    id: 'bahan_sensor',
-                                    name: 'spk_sensor',
-                                    labelAlign: 'top',
-                                    fieldLabel: 'Sensor',
-                                    margin: '5 5 0 0',
-                                    width: '15%',
-                                    readOnly: true
-                                },{
-                                    id: 'bahan_core',
-                                    name: 'spk_core',
-                                    labelAlign: 'top',
-                                    fieldLabel: 'Core',
-                                    allowBlank: 'false',
-                                    margin: '5 5 0 0',
-                                    width: '15%',
-                                    readOnly: true
                                 }]
                             },/*{
                                 xtype: 'container',
@@ -465,7 +460,7 @@
                                     fieldLabel: 'Qty Order',
                                     allowBlank: 'false',
                                     margin: '5 5 0 0',
-                                    width: '20%'
+                                    flex: 2
                                 },{
                                     id: 'spk_upp',
                                     name: 'spk_upporder',
@@ -473,14 +468,14 @@
                                     fieldLabel: 'Qty UPP',
                                     allowBlank: 'false',
                                     margin: '5 5 0 0',
-                                    width: '20%'
+                                    flex: 2
                                 },{
                                     id: 'spk_total',
                                     name: 'spk_totalorder',
                                     labelAlign: 'top',
                                     fieldLabel: 'Total',
                                     margin: '5 5 0 0',
-                                    width: '20%'
+                                    flex: 2
                                 },{
                                     xtype:'textfield',
                                     id: 'bahan_qtyname',
@@ -489,7 +484,7 @@
                                     fieldLabel: 'Qty Type',
                                     allowBlank: false,
                                     margin: '5 5 0 0',
-                                    width: '10%',
+                                    flex: 1,
                                     readOnly: true
                                 },{
                                     xtype:'textfield',
@@ -499,7 +494,7 @@
                                     fieldLabel: 'Total Type',
                                     allowBlank: false,
                                     margin: '5 5 0 0',
-                                    width: '10%',
+                                    flex: 1,
                                     readOnly: true
                                 }]
                             },{
@@ -543,7 +538,7 @@
                                     allowBlank: 'false',
                                     margin: '22 5 0 0',
                                     width: '20%',
-                                    readOnly: true
+                                    readOnly: false
                                 }]
                             },{
                                 xtype: 'container',
@@ -573,16 +568,17 @@
                                     }                                      
                                 },
                                 items: [{
-                                    xtype: 'textfield',
+                                    xtype: 'numberfield',
                                     id: 'jml_roll',
                                     name: 'jml_roll',
                                     fieldLabel: 'Jumlah Roll',
                                     allowBlank: 'false',
                                     margin: '5 5 0 0',
                                     width: '30%',
+                                    flex: 1,
                                     readOnly: true
                                 },{
-                                    xtype: 'textfield',
+                                    xtype: 'numberfield',
                                     id: 'digunakan_total',
                                     name: 'total',
                                     fieldLabel: 'TOTAL',
@@ -590,17 +586,18 @@
                                     allowBlank: 'false',
                                     margin: '5 5 0 8',
                                     width: '31%',
+                                    flex: 1,
                                     readOnly: true
                                 },{
-                                    xtype: 'textfield',
+                                    xtype: 'numberfield',
                                     id: 'total_m2',
-                                    dataIndex:'total',
                                     name: 'total2',
                                     fieldLabel: 'TOTAL m<sup>2</sup>',
                                     allowBlank: 'false',
                                     margin: '5 5 0 8',
                                     width: '31%',
-                                    renderer: Ext.util.Format.numberRenderer('0.000'),
+                                    format: '0,00',
+                                    flex: 1,
                                     readOnly: true
                                 }]
                             },{

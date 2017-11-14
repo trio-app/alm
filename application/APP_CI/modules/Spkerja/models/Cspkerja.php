@@ -80,6 +80,8 @@ function insertDT($dtrows)
                     
                         'total'=>$dtrows['total'],
                     
+                        'total2'=>$dtrows['total2'],
+                    
                         'spk_tglkirim' => $dtrows['spk_tglkirim'],
                     
                         'spk_nosuratjalan' => $dtrows['spk_nosuratjalan'],

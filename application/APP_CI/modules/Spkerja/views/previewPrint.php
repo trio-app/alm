@@ -219,7 +219,9 @@
 				<td style="padding: 10px;" width="345">
 					UKURAN :
 				</td>
-				<td align="center" rowspan="3" style="padding: 10px;" width="345"> <h3>TOTAL : <span style="color: #ff0000;"><?php echo number_format($value['total']); ?></span> m</h3></td>
+                                <td align="left" rowspan="3" style="padding: 10px;" width="345"> <h3>TOTAL : <span style="color: #ff0000;"><?php echo number_format($value['total']); ?></span> M</h3><br>
+                                    <h3>TOTAL : <span style="color: #ff0000;"><?php echo number_format($value['total2'],1); ?></span> M<sup>2</sup></h3>
+                                </td>
 			</tr>
 			<tr>
 				<td style="padding: 10px;">
